@@ -11,7 +11,11 @@ class CreateMetaTable extends Migration
         Schema::create('meta', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            //
+            $table->nullableMorphs('metaable');
+            $table->string("key")->nullable();
+            $table->longText("group")->nullable();
+            $table->longText("value")->nullable();
+            $table->longText("type")->nullable();
 
             $table->timestamps();
         });

@@ -11,7 +11,12 @@ class CreateTransactionLogsTable extends Migration
         Schema::create('transaction_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            //
+            $table->foreignIdFor(\App\Models\User::class);
+            $table->string('trxid')->nullable();
+            $table->string('type')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('balance')->nullable();
+            $table->string('details')->nullable();
 
             $table->timestamps();
         });

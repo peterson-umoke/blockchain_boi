@@ -11,7 +11,11 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            //
+            $table->foreignIdFor(\App\Models\User::class);
+            $table->string('status')->default('pending');
+            $table->decimal('amount', 15)->default(0.00);
+            $table->string("type")->default('deposits');
+            $table->nullableMorphs('payable');
 
             $table->timestamps();
         });
